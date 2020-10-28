@@ -34,14 +34,14 @@ jobs:
       run: |
         git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
+        sudo ./scripts/feeds update
+        sudo ./scripts/feeds install
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
         TNAME: K2P-5.0
       run: |
-        sudo ./scripts/feeds update
-        sudo ./scripts/feeds install
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
