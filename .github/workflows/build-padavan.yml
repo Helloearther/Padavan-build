@@ -40,6 +40,8 @@ jobs:
       env:
         TNAME: K2P-5.0
       run: |
+        sudo ./scripts/feeds update
+        sudo ./scripts/feeds install
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
